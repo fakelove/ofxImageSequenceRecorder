@@ -25,7 +25,7 @@ public:
         
     }  
     void reset(){
-        if(!isThreadRunning){
+        if(!isThreadRunning()){
             counter = 0;
             prefix = "";
             format = "";
