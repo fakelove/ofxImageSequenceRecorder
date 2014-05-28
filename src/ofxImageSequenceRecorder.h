@@ -24,7 +24,13 @@ public:
         counter=0;  
         
     }  
-    
+    void reset(){
+        if(!isThreadRunning){
+            counter = 0;
+            prefix = "";
+            format = "";
+        }
+    }
     void setPrefix(string pre){
         prefix = pre;
     }
@@ -41,9 +47,6 @@ public:
                 q.pop();
             }
         }
-        
-
-        
     }   
     
     void addFrame(ofImage &img){
@@ -60,10 +63,8 @@ public:
         
     void addFrame(ofPixels imageToSave) {  
 
-        
-        
         char fileName[100]; 
-        sprintf(fileName,  "%s%.4i.%s" , prefix.c_str(), counter, format.c_str());     
+        snprintf(fileName, sizeof(fileName), "%s%.4i.%s" , prefix.c_str(), counter, format.c_str());
         counter++;   
         
         QueuedImage qImage;
